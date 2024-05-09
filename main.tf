@@ -13,6 +13,21 @@ provider "azurerm" {
   features {}
 }
 
+terraform {
+  backend "azurerm" {
+    resource_group_name = "tr_rg_blobstore"
+    storage_account_name = "tfstoragerklrkl"
+    container_name = "tfstate"
+    key = "terraform.tfstate"
+  }
+}
+
+variable "imagebuild" {
+  type        = string
+  description = "Latest Image Build"
+}
+
+
 resource "azurerm_resource_group" "tf_test" {
   name     = "tfmainrg"
   location = "polandcentral"
@@ -29,7 +44,7 @@ resource "azurerm_container_group" "trcg_test" {
 
     container {
         name = "weathertestapi"
-        image = "rklrkl/weathertestapi"
+        image = "rklrkl/weathertestapi:${var.imagebuild}"
         cpu = 1
         memory = 1
         ports {
