@@ -13,14 +13,14 @@ provider "azurerm" {
   features {}
 }
 
-terraform {
-  backend "azurerm" {
-    resource_group_name = "tr_rg_blobstore"
-    storage_account_name = "tfstoragerklrkl"
-    container_name = "tfstate"
-    key = "terraform.tfstate"
-  }
-}
+# terraform {
+#   backend "azurerm" {
+#     resource_group_name = "tr_rg_blobstore"
+#     storage_account_name = "tfstoragerklrkl"
+#     container_name = "tfstate"
+#     key = "terraform.tfstate"
+#   }
+# }
 
 variable "imagebuild" {
   type        = string
